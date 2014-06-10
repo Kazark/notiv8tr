@@ -1,7 +1,24 @@
-var request = require('request');
-var assert = require('assert');
+/* jshint expr: true */
+var http = require('q-io/http');
+var chai = require('chai');
+var expect = chai.expect;
 
-request('http://localhost:3000/', function(error, response, body) {
-    assert(!error && response.statusCode === 200,
-           "GET request to application root should return status code 200 OK");
+describe('notiv8tr HTTP API', function() {
+    describe('GET request to application root', function() {
+        var response;
+
+        beforeEach(function(done) {
+            http.request({
+                method: 'GET',
+                url: 'http://localhost:3000/',
+            }).then(function(r) {
+                response = r;
+                done();
+            });
+        });
+
+        it('should return status code 200 OK', function() {
+            expect(response.status).to.equal(200);
+        });
+    });
 });

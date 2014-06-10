@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/Kazark/notiv8tr",
   "devDependencies": {
-    "request": "^2.36.0"
+    "gulp-mocha": "~0.4.1",
+    "gulp": "~3.8.0",
+    "chai": "~1.9.1",
+    "q-io": "~1.11.2"
   },
   "dependencies": {
     "express": "^4.4.2"
