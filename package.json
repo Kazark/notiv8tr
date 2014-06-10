@@ -1,0 +1,25 @@
+{
+  "name": "notiv8tr",
+  "version": "0.0.0",
+  "description": "Motivate yourself by noting progress on your projects",
+  "main": "build/notiv8tr.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kazark/notiv8tr.git"
+  },
+  "author": "Kazark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kazark/notiv8tr/issues"
+  },
+  "homepage": "https://github.com/Kazark/notiv8tr",
+  "devDependencies": {
+    "request": "^2.36.0"
+  },
+  "dependencies": {
+    "express": "^4.4.2"
+  }
+}
