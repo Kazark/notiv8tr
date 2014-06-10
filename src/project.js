@@ -1,0 +1,3 @@
+var createProject = function() {
+    return {};
+};

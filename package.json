@@ -20,7 +20,8 @@
     "gulp-mocha": "~0.4.1",
     "gulp": "~3.8.0",
     "chai": "~1.9.1",
-    "q-io": "~1.11.2"
+    "q-io": "~1.11.2",
+    "gulp-concat": "~2.2.0"
   },
   "dependencies": {
     "express": "^4.4.2"
