@@ -1,11 +1,19 @@
 /* jshint expr: true */
 describe('project', function() {
-    it('should be able to be created from a name and a user ID', function() {
-        var project = createProject({
-            userID: 0,
+    var project;
+    describe('created from a name and user ID', function() {
+        var projectParams = {
+            creatorUserID: 0,
             projectName: "Biblical Theology"
+        };
+
+        beforeEach(function() {
+            project = createProject(projectParams);
         });
 
-        expect(project).to.be.ok;
+        it('should have that name and user ID', function() {
+            expect(project.name).to.equal(projectParams.projectName);
+            expect(project.creatorUserID).to.equal(projectParams.creatorUserID);
+        });
     });
 });
