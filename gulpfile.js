@@ -2,16 +2,25 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
 
-var paths = ['src/project.js', 'specs/intro.spec.js', 'specs/project.spec.js'];
+var files = {
+    lib: {
+        src: ['src/lib/*.js'],
+        specs: ['specs/specs-intro.js', 'specs/*.spec.js'],
+    },
+    api: {
+        specs: 'api_specs/api.spec.js'
+    }
+};
+files.lib.all = files.lib.src.concat(files.lib.specs);
 
 gulp.task('api-specs', function() {
     /* TODO: start service */
-    return gulp.src('api_specs/api.spec.js')
+    return gulp.src(files.api.specs)
         .pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('concat-specs', function() {
-    return gulp.src(paths)
+    return gulp.src(files.lib.all)
         .pipe(concat('specs.js'))
         .pipe(gulp.dest('build/'));
 });
