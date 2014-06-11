@@ -6,23 +6,23 @@ var paths = ['src/project.js', 'specs/intro.spec.js', 'specs/project.spec.js'];
 
 gulp.task('api-specs', function() {
     /* TODO: start service */
-    gulp.src('api_specs/api.spec.js')
+    return gulp.src('api_specs/api.spec.js')
         .pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('concat-specs', function() {
-    gulp.src(paths)
+    return gulp.src(paths)
         .pipe(concat('specs.js'))
-        .pipe(gulp.dest('./build/'));
+        .pipe(gulp.dest('build/'));
 });
 
-gulp.task('specs', function() {
-    gulp.src('build/specs.js')
+gulp.task('specs', ['concat-specs'], function() {
+    return gulp.src('build/specs.js')
         .pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('dev', function() {
-    gulp.watch(paths, ['default']);
+    return gulp.watch(paths, ['default']);
 });
 
-gulp.task('default', ['concat-specs', 'specs']);
+gulp.task('default', ['specs']);

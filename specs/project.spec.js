@@ -17,11 +17,11 @@ describe('project', function() {
         });
 
         it('should have a project ID', function() {
-            expect(project.id).to.equal(1000);
+            expect(project.id).to.equal('1000');
         });
 
         it('should have a URL (HATEOS)', function() {
-            expect(project.url).to.equal('http://localhost:3000/api/project/1000');
+            expect(project.url()).to.equal('http://localhost:3000/api/project/1000');
         });
     });
 });
