@@ -15,7 +15,7 @@ files.lib.all = files.lib.src.concat(files.lib.specs);
 
 gulp.task('api-specs', function() {
     /* TODO: start service */
-    return gulp.src(files.api.specs)
+    gulp.src(files.api.specs)
         .pipe(mocha({reporter: 'spec'}));
 });
 
