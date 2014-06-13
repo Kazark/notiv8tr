@@ -51,6 +51,24 @@ describe('notiv8tr HTTP API', function() {
         });
     });
 
+    describe('GET request to api/projects', function() {
+        var response;
+
+        beforeEach(function(done) {
+            http.request({
+                method: 'GET',
+                url: BASE_URL + 'api/projects/1000'
+            }).then(function(r) {
+                response = r;
+                done();
+            });
+        });
+
+        it('should return a project', function() {
+            expect(response.status).to.equal(200);
+        });
+    });
+
     after(function() {
         service.kill('SIGINT');
     });

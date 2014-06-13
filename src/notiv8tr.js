@@ -10,4 +10,8 @@ app.post('/api/projects', function(request, response) {
     response.status(201).send(request.body);
 });
 
+app.get('/api/projects/:id', function(request, response) {
+    response.send('TODO');
+});
+
 app.listen(3000);
