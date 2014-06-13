@@ -1,10 +1,17 @@
 /* jshint expr: true */
+var spawn = require('child_process').spawn;
 var http = require('q-io/http');
 var chai = require('chai');
 var expect = chai.expect;
 var BASE_URL = 'http://localhost:3000/';
 
 describe('notiv8tr HTTP API', function() {
+    var service;
+    before(function(done) {
+        service = spawn('node', ['./src/notiv8tr.js']);
+        setTimeout(done, 500); // Give the service half a second to get itself going
+    });
+
     describe('GET request to application root', function() {
         var response;
 
@@ -42,5 +49,9 @@ describe('notiv8tr HTTP API', function() {
         it('should create a project', function() {
             expect(response.status).to.equal(201);
         });
+    });
+
+    after(function() {
+        service.kill('SIGINT');
     });
 });
