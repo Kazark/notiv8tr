@@ -1,17 +1,14 @@
 var express = require('express');
-
+var bodyParser = require('body-parser');
 var app = express();
+var port = 3000;
+
+app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
     response.send('You have sucessfully accessed the notiv8tr service prototype');
 });
 
-app.post('/api/projects', function(request, response) {
-    response.status(201).send(request.body);
-});
+api.registerRoutes(app);
 
-app.get('/api/projects/:id', function(request, response) {
-    response.send('TODO');
-});
-
-app.listen(3000);
+app.listen(port);

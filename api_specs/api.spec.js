@@ -8,7 +8,7 @@ var BASE_URL = 'http://localhost:3000/';
 describe('notiv8tr HTTP API', function() {
     var service;
     before(function(done) {
-        service = spawn('node', ['./src/notiv8tr.js']);
+        service = spawn('node', ['./build/notiv8tr.js']);
         setTimeout(done, 500); // Give the service half a second to get itself going
     });
 
@@ -30,42 +30,45 @@ describe('notiv8tr HTTP API', function() {
         });
     });
 
-    describe('POST request to api/projects', function() {
-        var response;
+    describe('When I create a project by sending a POST request to api/projects', function() {
+        var postResponse;
+        var projectName = 'Exercising';
 
         beforeEach(function(done) {
             http.request({
                 method: 'POST',
+                headers: {'Content-Type': 'application/json'},
                 url: BASE_URL + 'api/projects',
                 body: [JSON.stringify({
-                    projectName: 'Exercising'
+                    projectName: projectName
                 })]
             }).then(function(r) {
-                response = r;
+                postResponse = r;
                 done();
             });
         });
 
-        it('should create a project', function() {
-            expect(response.status).to.equal(201);
-        });
-    });
+        describe('then a GET request to the URL returned from the POST', function() {
+            var status;
+            var body;
 
-    describe('GET request to api/projects', function() {
-        var response;
-
-        beforeEach(function(done) {
-            http.request({
-                method: 'GET',
-                url: BASE_URL + 'api/projects/1000'
-            }).then(function(r) {
-                response = r;
-                done();
+            beforeEach(function(done) {
+                http.request({
+                    method: 'GET',
+                    url: postResponse.body.url
+                }).then(function(response) {
+                    status = response.status;
+                    return response.body.read();
+                }).then(function(rawBody) {
+                    body = JSON.parse(rawBody);
+                    done();
+                });
             });
-        });
 
-        it('should return a project', function() {
-            expect(response.status).to.equal(200);
+            it('should return the project', function() {
+                expect(status).to.equal(200);
+                expect(body.projectName).to.equal(projectName);
+            });
         });
     });
 
