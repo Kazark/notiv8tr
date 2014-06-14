@@ -17,12 +17,12 @@ describe('project', function() {
             expect(project.creatorUserID).to.equal(projectParams.creatorUserID);
         });
 
-        it('should have a project ID', function() {
-            expect(project.asJsonForDb().id).to.equal('1000');
+        it('should have a project ID based on the user ID', function() {
+            expect(project.asJsonForDb().id).to.equal('0-1000');
         });
 
-        it('should have a URL (HATEOS)', function() {
-            expect(project.url('<base-url>')).to.equal('<base-url>/1000');
+        it('should be able to format its URI given a base URL', function() {
+            expect(project.url('<base-url>')).to.equal('<base-url>/0-1000');
         });
     });
 });

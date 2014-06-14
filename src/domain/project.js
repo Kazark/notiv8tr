@@ -1,5 +1,5 @@
 domain.createProject = function() {
-    var id = '1000';
+    var id;
     var name;
     var creatorUserID;
     var project = {};
@@ -8,6 +8,7 @@ domain.createProject = function() {
     create.fromPost = function(params) {
         name = params.projectName;
         creatorUserID = params.creatorUserID;
+        id = creatorUserID + '-1000';
         return project;
     };
 

@@ -1,6 +1,6 @@
     api.registerRoutes = function(app) {
-        app.post(projects.url, projects.post);
-        app.get(projects.url + '/:id', projects.getById);
+        app.post(api.projects.url, api.projects.post);
+        app.get(api.projects.url + '/:id', api.projects.getById);
     };
 
     return api;
