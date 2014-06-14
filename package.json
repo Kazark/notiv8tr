@@ -22,7 +22,8 @@
     "chai": "~1.9.1",
     "q-io": "~1.11.2",
     "gulp-concat": "~2.2.0",
-    "gulp-watch": "~0.6.5"
+    "gulp-watch": "~0.6.5",
+    "request-json": "~0.4.10"
   },
   "dependencies": {
     "express": "^4.4.2",
