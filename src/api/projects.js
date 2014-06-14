@@ -13,5 +13,10 @@ api.projects = (function() {
         response.json(_project.asJsonForHttp());
     };
 
+    projects.registerRoutes = function(app) {
+        app.post(projects.url, projects.post);
+        app.get(projects.url + '/:id', projects.getById);
+    };
+
     return projects;
 })();
