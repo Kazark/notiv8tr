@@ -42,7 +42,6 @@ api.createProject = function() {
 var _project; // TODO this needs to be test-drive away...
 
 projects.post = function(request, response) {
-    console.log(request.body);
     _project = api.createProject().fromPost(request.body);
     response.send(201, _project.asJsonForHttp());
 };
