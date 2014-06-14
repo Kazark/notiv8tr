@@ -15,6 +15,7 @@ var files = {
 };
 files.src.testable = files.src.api.concat(files.src.domain);
 files.src.all = files.src.testable.concat(files.src.main);
+files.specs.withSrc = files.src.testable.concat(files.specs.unittests);
 
 gulp.task('api-specs', ['concat-src'], function() {
     gulp.src(files.specs.integration)
@@ -28,7 +29,7 @@ gulp.task('concat-src', function() {
 });
 
 gulp.task('concat-specs', function() {
-    return gulp.src(files.src.testable.concat(files.specs.unittests))
+    return gulp.src(files.specs.withSrc)
         .pipe(concat('specs.js'))
         .pipe(gulp.dest('build/'));
 });
@@ -39,7 +40,7 @@ gulp.task('specs', ['concat-specs'], function() {
 });
 
 gulp.task('dev', function() {
-    return gulp.watch(paths, ['default']);
+    return gulp.watch(files.specs.withSrc, ['default']);
 });
 
 gulp.task('default', ['specs']);

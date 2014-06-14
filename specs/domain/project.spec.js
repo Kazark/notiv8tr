@@ -8,7 +8,7 @@ describe('project', function() {
         };
 
         beforeEach(function() {
-            project = api.createProject().fromPost(projectParams);
+            project = domain.createProject().fromPost(projectParams);
         });
 
         it('should have that name and user ID', function() {
@@ -22,7 +22,7 @@ describe('project', function() {
         });
 
         it('should have a URL (HATEOS)', function() {
-            expect(project.url()).to.equal('http://localhost:3000/api/projects/1000');
+            expect(project.url('<base-url>')).to.equal('<base-url>/1000');
         });
     });
 });
