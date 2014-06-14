@@ -1,6 +1,6 @@
 var projects = {};
 
-projects.url = baseUrl + 'projects';
+projects.url = api.url + 'projects';
 
 api.createProject = function() {
     var id = '1000';
@@ -16,7 +16,7 @@ api.createProject = function() {
     };
 
     project.url = function() {
-        return 'http://localhost:3000' + projects.url + '/' + id;
+        return baseUrl + projects.url + '/' + id;
     };
 
     project.asJsonForHttp = function() {
