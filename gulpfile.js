@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
 
@@ -19,18 +20,24 @@ files.specs.withSrc = files.src.testable.concat(files.specs.unittests);
 
 gulp.task('api-specs', ['concat-src'], function() {
     gulp.src(files.specs.integration)
+        .pipe(jshint({ eqeqeq: true }))
+        .pipe(jshint.reporter('default'))
         .pipe(mocha({reporter: 'spec'}));
 });
 
 gulp.task('concat-src', function() {
     return gulp.src(files.src.all)
         .pipe(concat('notiv8tr.js'))
+        .pipe(jshint({ eqeqeq: true }))
+        .pipe(jshint.reporter('default'))
         .pipe(gulp.dest('build/'));
 });
 
 gulp.task('concat-specs', function() {
     return gulp.src(files.specs.withSrc)
         .pipe(concat('specs.js'))
+        .pipe(jshint({ eqeqeq: true }))
+        .pipe(jshint.reporter('default'))
         .pipe(gulp.dest('build/'));
 });
 
