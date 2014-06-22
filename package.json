@@ -21,7 +21,6 @@
     "gulp": "~3.8.0",
     "gulp-concat": "~2.2.0",
     "gulp-jshint": "^1.6.3",
-    "gulp-jslint": "^0.1.0",
     "gulp-mocha": "~0.4.1",
     "gulp-watch": "~0.6.5",
     "request-json": "~0.4.10",
