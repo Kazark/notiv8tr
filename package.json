@@ -24,7 +24,8 @@
     "gulp-mocha": "~0.4.1",
     "gulp-watch": "~0.6.5",
     "request-json": "~0.4.10",
-    "sinon": "^1.10.2"
+    "sinon": "^1.10.2",
+    "gulp-jade": "~0.6.1"
   },
   "dependencies": {
     "express": "^4.4.2",

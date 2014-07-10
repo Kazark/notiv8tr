@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
+var jade = require('gulp-jade');
 
 var files = {
     src: {
@@ -12,11 +13,18 @@ var files = {
     specs: {
         unittests: ['specs/specs-intro.js', 'specs/*/*.spec.js'],
         integration: ['api_specs/api.spec.js']
-    }
+    },
+    views: './views/*.jade'
 };
 files.src.testable = files.src.api.concat(files.src.domain);
 files.src.all = files.src.testable.concat(files.src.main);
 files.specs.withSrc = files.src.testable.concat(files.specs.unittests);
+
+gulp.task('jade', function() {
+  gulp.src(files.views)
+    .pipe(jade({}))
+    .pipe(gulp.dest('./build/'));
+});
 
 gulp.task('api-specs', ['concat-src'], function() {
     gulp.src(files.specs.integration)
@@ -47,6 +55,8 @@ gulp.task('specs', ['concat-specs'], function() {
 });
 
 gulp.task('dev', function() {
+    gulp.watch(files.views, ['jade']);
+    gulp.watch(files.src.main, ['concat-src']);
     return gulp.watch(files.specs.withSrc, ['default']);
 });
 

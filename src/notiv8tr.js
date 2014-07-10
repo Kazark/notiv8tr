@@ -6,7 +6,7 @@ var port = 3000;
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
-    response.send('You have sucessfully accessed the notiv8tr service prototype');
+    response.sendfile('build/index.html');
 });
 
 api.registerRoutes(app);
