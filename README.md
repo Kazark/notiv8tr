@@ -1,4 +1,4 @@
-Motivate Yourself by Noting Progress on Your Projects
+Motivate Yourself by Noting Progress on Your Projects [![Built with Gulp](http://img.shields.io/badge/Built%20with-Gulp-orange.svg)](http://gulpjs.com)
 ========
 
 I am the type of person who is motivated by a sense of accomplishment. I got A's
