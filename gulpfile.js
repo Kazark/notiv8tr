@@ -60,4 +60,4 @@ gulp.task('dev', function() {
     return gulp.watch(files.specs.withSrc, ['default']);
 });
 
-gulp.task('default', ['specs']);
+gulp.task('default', ['jade', 'specs']);
