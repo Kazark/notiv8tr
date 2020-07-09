@@ -1,3 +1,5 @@
+Just use Org-Mode already.
+
 Motivate Yourself by Noting Progress on Your Projects [![Built with Gulp](http://img.shields.io/badge/Built%20with-Gulp-orange.svg)](http://gulpjs.com)
 ========
 
